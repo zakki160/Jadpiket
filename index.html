@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadwal Piket Kebersihan Kelas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .day-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .day-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen py-8">
+    <div class="container mx-auto px-4 max-w-6xl">
+        <!-- Navigation -->
+        <div class="flex justify-center mb-6">
+            <div class="bg-white rounded-lg p-1 shadow-lg">
+                <button id="scheduleBtn" class="px-6 py-2 rounded-md bg-blue-600 text-white font-medium transition-colors">
+                    📅 Jadwal Piket
+                </button>
+                <button id="editBtn" class="px-6 py-2 rounded-md text-gray-600 hover:bg-gray-100 font-medium transition-colors">
+                    ✏️ Edit Nama
+                </button>
+                <button id="settingsBtn" class="px-6 py-2 rounded-md text-gray-600 hover:bg-gray-100 font-medium transition-colors">
+                    ⚙️ Pengaturan
+                </button>
+            </div>
+        </div>
+
+        <!-- Schedule Page -->
+        <div id="schedulePage">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <div class="flex items-center justify-center mb-4">
+                    <img id="headerLogo" src="" alt="Logo" class="w-16 h-16 mr-4 rounded-lg shadow-lg hidden">
+                    <div class="text-6xl mr-4" id="defaultIcon">📅</div>
+                    <div>
+                        <h1 id="headerTitle" class="text-4xl font-bold text-white mb-2">Jadwal Piket Kebersihan Kelas</h1>
+                        <p class="text-blue-100 text-lg">Senin - Jumat | 40 Murid</p>
+                    </div>
+                </div>
+            </div>
+
+        <!-- Schedule Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+            <!-- Senin -->
+            <div class="day-card bg-white rounded-xl p-6 card-shadow" data-day="senin">
+                <div class="flex items-center mb-4">
+                    <div class="w-3 h-3 bg-red-500 rounded-full mr-3"></div>
+                    <h2 class="text-xl font-bold text-gray-800">SENIN</h2>
+                </div>
+                <div class="space-y-2">
+                    <div class="text-sm font-medium text-gray-600 mb-3">👥 8 Murid</div>
+                    <div class="space-y-1 text-sm text-gray-700 student-list">
+                        <!-- Students will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Selasa -->
+            <div class="day-card bg-white rounded-xl p-6 card-shadow" data-day="selasa">
+                <div class="flex items-center mb-4">
+                    <div class="w-3 h-3 bg-blue-500 rounded-full mr-3"></div>
+                    <h2 class="text-xl font-bold text-gray-800">SELASA</h2>
+                </div>
+                <div class="space-y-2">
+                    <div class="text-sm font-medium text-gray-600 mb-3">👥 8 Murid</div>
+                    <div class="space-y-1 text-sm text-gray-700 student-list">
+                        <!-- Students will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rabu -->
+            <div class="day-card bg-white rounded-xl p-6 card-shadow" data-day="rabu">
+                <div class="flex items-center mb-4">
+                    <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                    <h2 class="text-xl font-bold text-gray-800">RABU</h2>
+                </div>
+                <div class="space-y-2">
+                    <div class="text-sm font-medium text-gray-600 mb-3">👥 8 Murid</div>
+                    <div class="space-y-1 text-sm text-gray-700 student-list">
+                        <!-- Students will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kamis -->
+            <div class="day-card bg-white rounded-xl p-6 card-shadow" data-day="kamis">
+                <div class="flex items-center mb-4">
+                    <div class="w-3 h-3 bg-yellow-500 rounded-full mr-3"></div>
+                    <h2 class="text-xl font-bold text-gray-800">KAMIS</h2>
+                </div>
+                <div class="space-y-2">
+                    <div class="text-sm font-medium text-gray-600 mb-3">👥 8 Murid</div>
+                    <div class="space-y-1 text-sm text-gray-700 student-list">
+                        <!-- Students will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jumat -->
+            <div class="day-card bg-white rounded-xl p-6 card-shadow" data-day="jumat">
+                <div class="flex items-center mb-4">
+                    <div class="w-3 h-3 bg-purple-500 rounded-full mr-3"></div>
+                    <h2 class="text-xl font-bold text-gray-800">JUMAT</h2>
+                </div>
+                <div class="space-y-2">
+                    <div class="text-sm font-medium text-gray-600 mb-3">👥 8 Murid</div>
+                    <div class="space-y-1 text-sm text-gray-700 student-list">
+                        <!-- Students will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="mt-8 bg-white rounded-xl p-6 card-shadow">
+            <h3 class="text-lg font-bold text-gray-800 mb-4">📋 Keterangan Tugas:</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                <div class="flex items-center">
+                    <span class="text-blue-600 mr-2">🧹</span>
+                    <span>Menyapu lantai</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-green-600 mr-2">🪣</span>
+                    <span>Mengepel lantai</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-purple-600 mr-2">🗑️</span>
+                    <span>Membuang sampah</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-orange-600 mr-2">🧽</span>
+                    <span>Membersihkan papan tulis</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-red-600 mr-2">🪟</span>
+                    <span>Membersihkan jendela</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-teal-600 mr-2">📚</span>
+                    <span>Merapikan buku & alat tulis</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-indigo-600 mr-2">🪑</span>
+                    <span>Merapikan meja & kursi</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-pink-600 mr-2">🌸</span>
+                    <span>Menyiram tanaman</span>
+                </div>
+            </div>
+        </div>
+
+            <!-- Footer -->
+            <div class="text-center mt-8">
+                <div class="bg-white rounded-xl p-4 card-shadow inline-block">
+                    <p class="text-gray-600 text-sm">
+                        ✨ <strong>Catatan:</strong> Setiap kelompok terdiri dari 8 siswa dengan pembagian tugas yang merata
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Page -->
+        <div id="settingsPage" class="hidden">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-4xl font-bold text-white mb-2">⚙️ Pengaturan</h1>
+                <p class="text-blue-100 text-lg">Ubah judul dan logo aplikasi</p>
+            </div>
+
+            <!-- Settings Form -->
+            <div class="bg-white rounded-xl p-6 card-shadow mb-6">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">🎨 Kustomisasi Tampilan</h2>
+                
+                <!-- Title Settings -->
+                <div class="mb-8">
+                    <label class="block text-lg font-semibold text-gray-700 mb-3">📝 Judul Aplikasi</label>
+                    <input type="text" id="titleInput" 
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-lg"
+                           placeholder="Masukkan judul aplikasi...">
+                </div>
+
+                <!-- Logo Settings -->
+                <div class="mb-8">
+                    <label class="block text-lg font-semibold text-gray-700 mb-3">🖼️ Logo Aplikasi</label>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="flex-shrink-0">
+                                <div class="w-20 h-20 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center bg-gray-50">
+                                    <img id="logoPreview" src="" alt="Preview" class="w-full h-full object-cover rounded-lg hidden">
+                                    <div id="logoPlaceholder" class="text-gray-400 text-center">
+                                        <div class="text-2xl mb-1">🖼️</div>
+                                        <div class="text-xs">Preview</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex-1">
+                                <input type="file" id="logoInput" accept="image/*" 
+                                       class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition-colors">
+                                <p class="text-sm text-gray-500 mt-2">Format: JPG, PNG, GIF (Maks. 2MB)</p>
+                            </div>
+                        </div>
+                        <button id="removeLogo" class="text-red-600 hover:text-red-700 text-sm font-medium hidden">
+                            🗑️ Hapus Logo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex space-x-4">
+                    <button id="saveSettings" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex-1">
+                        💾 Simpan Pengaturan
+                    </button>
+                    <button id="resetSettings" class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex-1">
+                        🔄 Reset Default
+                    </button>
+                </div>
+            </div>
+
+            <!-- Instructions -->
+            <div class="bg-white rounded-xl p-6 card-shadow">
+                <h3 class="text-lg font-bold text-gray-800 mb-4">📋 Petunjuk:</h3>
+                <ul class="text-gray-600 space-y-2">
+                    <li>• Ketik judul baru di kolom "Judul Aplikasi"</li>
+                    <li>• Klik "Choose File" untuk mengunggah logo dari komputer</li>
+                    <li>• Logo akan otomatis diubah ukurannya agar sesuai</li>
+                    <li>• Klik "Simpan Pengaturan" untuk menerapkan perubahan</li>
+                    <li>• Klik "Reset Default" untuk mengembalikan ke pengaturan awal</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Edit Page -->
+        <div id="editPage" class="hidden">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-4xl font-bold text-white mb-2">✏️ Edit Nama Murid</h1>
+                <p class="text-blue-100 text-lg">Ubah nama Murid sesuai kebutuhan</p>
+            </div>
+
+            <!-- Edit Form -->
+            <div class="bg-white rounded-xl p-6 card-shadow mb-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">📝 Daftar Nama Murid</h2>
+                    <div class="space-x-2">
+                        <button id="saveBtn" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                            💾 Simpan Perubahan
+                        </button>
+                        <button id="resetBtn" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                            🔄 Reset Default
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Input fields will be generated by JavaScript -->
+                    <div id="nameInputs"></div>
+                </div>
+            </div>
+
+            <!-- Instructions -->
+            <div class="bg-white rounded-xl p-6 card-shadow">
+                <h3 class="text-lg font-bold text-gray-800 mb-4">📋 Petunjuk:</h3>
+                <ul class="text-gray-600 space-y-2">
+                    <li>• Klik pada kolom nama untuk mengedit</li>
+                    <li>• Tekan "Simpan Perubahan" untuk menyimpan nama baru</li>
+                    <li>• Tekan "Reset Default" untuk mengembalikan nama asli</li>
+                    <li>• Perubahan akan langsung terlihat di jadwal piket</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Default student names
+        const defaultNames = [
+            'Ahmad Rizki', 'Siti Nurhaliza', 'Budi Santoso', 'Dewi Sartika', 'Eko Prasetyo', 'Fitri Handayani', 'Gilang Ramadhan', 'Hani Safitri',
+            'Indra Gunawan', 'Jihan Aulia', 'Kevin Ananda', 'Laila Sari', 'Muhammad Fajar', 'Nisa Amelia', 'Omar Hakim', 'Putri Maharani',
+            'Qori Fadillah', 'Rina Wulandari', 'Satria Bima', 'Tari Melati', 'Umar Faruq', 'Vina Cantika', 'Wahyu Hidayat', 'Xenia Putri',
+            'Yoga Pratama', 'Zahra Nabila', 'Arif Setiawan', 'Bella Safira', 'Candra Wijaya', 'Dina Mariana', 'Edi Kurniawan', 'Fani Oktavia',
+            'Gita Permata', 'Hendra Saputra', 'Ika Rahmawati', 'Joko Susilo', 'Kirana Dewi', 'Lukman Hakim', 'Maya Sari', 'Nanda Pratiwi'
+        ];
+
+        // Load names from localStorage or use defaults
+        let studentNames = JSON.parse(localStorage.getItem('studentNames')) || [...defaultNames];
+        
+        // Load settings from localStorage
+        let appTitle = localStorage.getItem('appTitle') || 'Jadwal Piket Kebersihan Kelas';
+        let appLogo = localStorage.getItem('appLogo') || '';
+
+        // DOM elements
+        const scheduleBtn = document.getElementById('scheduleBtn');
+        const editBtn = document.getElementById('editBtn');
+        const settingsBtn = document.getElementById('settingsBtn');
+        const schedulePage = document.getElementById('schedulePage');
+        const editPage = document.getElementById('editPage');
+        const settingsPage = document.getElementById('settingsPage');
+        const saveBtn = document.getElementById('saveBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const nameInputs = document.getElementById('nameInputs');
+        
+        // Settings elements
+        const titleInput = document.getElementById('titleInput');
+        const logoInput = document.getElementById('logoInput');
+        const logoPreview = document.getElementById('logoPreview');
+        const logoPlaceholder = document.getElementById('logoPlaceholder');
+        const removeLogo = document.getElementById('removeLogo');
+        const saveSettings = document.getElementById('saveSettings');
+        const resetSettings = document.getElementById('resetSettings');
+        const headerTitle = document.getElementById('headerTitle');
+        const headerLogo = document.getElementById('headerLogo');
+        const defaultIcon = document.getElementById('defaultIcon');
+
+        // Navigation functions
+        function showSchedule() {
+            schedulePage.classList.remove('hidden');
+            editPage.classList.add('hidden');
+            settingsPage.classList.add('hidden');
+            setActiveButton(scheduleBtn);
+            updateScheduleDisplay();
+        }
+
+        function showEdit() {
+            schedulePage.classList.add('hidden');
+            editPage.classList.remove('hidden');
+            settingsPage.classList.add('hidden');
+            setActiveButton(editBtn);
+            generateNameInputs();
+        }
+
+        function showSettings() {
+            schedulePage.classList.add('hidden');
+            editPage.classList.add('hidden');
+            settingsPage.classList.remove('hidden');
+            setActiveButton(settingsBtn);
+            loadSettingsForm();
+        }
+
+        function setActiveButton(activeBtn) {
+            [scheduleBtn, editBtn, settingsBtn].forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white');
+                btn.classList.add('text-gray-600', 'hover:bg-gray-100');
+            });
+            activeBtn.classList.add('bg-blue-600', 'text-white');
+            activeBtn.classList.remove('text-gray-600', 'hover:bg-gray-100');
+        }
+
+        // Generate input fields for editing names
+        function generateNameInputs() {
+            nameInputs.innerHTML = '';
+            studentNames.forEach((name, index) => {
+                const inputDiv = document.createElement('div');
+                inputDiv.className = 'space-y-2';
+                inputDiv.innerHTML = `
+                    <label class="block text-sm font-medium text-gray-700">Siswa ${index + 1}</label>
+                    <input type="text" value="${name}" 
+                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                           data-index="${index}">
+                `;
+                nameInputs.appendChild(inputDiv);
+            });
+        }
+
+        // Update schedule display with current names
+        function updateScheduleDisplay() {
+            const days = ['senin', 'selasa', 'rabu', 'kamis', 'jumat'];
+            const emojis = ['🧹', '🪣', '🗑️', '🧽', '🪟', '📚', '🪑', '🌸'];
+            const colors = ['text-blue-600', 'text-green-600', 'text-purple-600', 'text-orange-600', 'text-red-600', 'text-teal-600', 'text-indigo-600', 'text-pink-600'];
+
+            days.forEach((day, dayIndex) => {
+                const dayCard = document.querySelector(`[data-day="${day}"]`);
+                if (!dayCard) return;
+
+                const studentList = dayCard.querySelector('.student-list');
+                if (!studentList) return;
+
+                studentList.innerHTML = '';
+                
+                for (let i = 0; i < 8; i++) {
+                    const studentIndex = dayIndex * 8 + i;
+                    const studentDiv = document.createElement('div');
+                    studentDiv.className = 'flex justify-between';
+                    studentDiv.innerHTML = `
+                        <span>${studentIndex + 1}. ${studentNames[studentIndex]}</span>
+                        <span class="${colors[i]}">${emojis[i]}</span>
+                    `;
+                    studentList.appendChild(studentDiv);
+                }
+            });
+        }
+
+        // Save names to localStorage and update display
+        function saveNames() {
+            const inputs = nameInputs.querySelectorAll('input');
+            inputs.forEach((input, index) => {
+                studentNames[index] = input.value.trim() || defaultNames[index];
+            });
+            localStorage.setItem('studentNames', JSON.stringify(studentNames));
+            
+            // Show success message
+            const originalText = saveBtn.innerHTML;
+            saveBtn.innerHTML = '✅ Tersimpan!';
+            saveBtn.classList.add('bg-green-700');
+            setTimeout(() => {
+                saveBtn.innerHTML = originalText;
+                saveBtn.classList.remove('bg-green-700');
+            }, 2000);
+        }
+
+        // Reset to default names
+        function resetNames() {
+            if (confirm('Yakin ingin mengembalikan semua nama ke default?')) {
+                studentNames = [...defaultNames];
+                localStorage.removeItem('studentNames');
+                generateNameInputs();
+                
+                // Show reset message
+                const originalText = resetBtn.innerHTML;
+                resetBtn.innerHTML = '✅ Direset!';
+                resetBtn.classList.add('bg-red-700');
+                setTimeout(() => {
+                    resetBtn.innerHTML = originalText;
+                    resetBtn.classList.remove('bg-red-700');
+                }, 2000);
+            }
+        }
+
+        // Settings functions
+        function loadSettingsForm() {
+            titleInput.value = appTitle;
+            if (appLogo) {
+                logoPreview.src = appLogo;
+                logoPreview.classList.remove('hidden');
+                logoPlaceholder.classList.add('hidden');
+                removeLogo.classList.remove('hidden');
+            } else {
+                logoPreview.classList.add('hidden');
+                logoPlaceholder.classList.remove('hidden');
+                removeLogo.classList.add('hidden');
+            }
+        }
+
+        function updateHeader() {
+            headerTitle.textContent = appTitle;
+            if (appLogo) {
+                headerLogo.src = appLogo;
+                headerLogo.classList.remove('hidden');
+                defaultIcon.classList.add('hidden');
+            } else {
+                headerLogo.classList.add('hidden');
+                defaultIcon.classList.remove('hidden');
+            }
+        }
+
+        function handleLogoUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            // Check file size (2MB limit)
+            if (file.size > 2 * 1024 * 1024) {
+                alert('Ukuran file terlalu besar! Maksimal 2MB.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const imageData = e.target.result;
+                logoPreview.src = imageData;
+                logoPreview.classList.remove('hidden');
+                logoPlaceholder.classList.add('hidden');
+                removeLogo.classList.remove('hidden');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function removeLogoImage() {
+            logoPreview.src = '';
+            logoPreview.classList.add('hidden');
+            logoPlaceholder.classList.remove('hidden');
+            removeLogo.classList.add('hidden');
+            logoInput.value = '';
+        }
+
+        function saveAppSettings() {
+            // Save title
+            appTitle = titleInput.value.trim() || 'Jadwal Piket Kebersihan Kelas';
+            localStorage.setItem('appTitle', appTitle);
+
+            // Save logo
+            if (logoPreview.src && !logoPreview.classList.contains('hidden')) {
+                appLogo = logoPreview.src;
+                localStorage.setItem('appLogo', appLogo);
+            } else {
+                appLogo = '';
+                localStorage.removeItem('appLogo');
+            }
+
+            updateHeader();
+
+            // Show success message
+            const originalText = saveSettings.innerHTML;
+            saveSettings.innerHTML = '✅ Tersimpan!';
+            saveSettings.classList.add('bg-green-700');
+            setTimeout(() => {
+                saveSettings.innerHTML = originalText;
+                saveSettings.classList.remove('bg-green-700');
+            }, 2000);
+        }
+
+        function resetAppSettings() {
+            if (confirm('Yakin ingin mengembalikan judul dan logo ke default?')) {
+                appTitle = 'Jadwal Piket Kebersihan Kelas';
+                appLogo = '';
+                localStorage.removeItem('appTitle');
+                localStorage.removeItem('appLogo');
+                
+                loadSettingsForm();
+                updateHeader();
+
+                // Show reset message
+                const originalText = resetSettings.innerHTML;
+                resetSettings.innerHTML = '✅ Direset!';
+                resetSettings.classList.add('bg-red-700');
+                setTimeout(() => {
+                    resetSettings.innerHTML = originalText;
+                    resetSettings.classList.remove('bg-red-700');
+                }, 2000);
+            }
+        }
+
+        // Event listeners
+        scheduleBtn.addEventListener('click', showSchedule);
+        editBtn.addEventListener('click', showEdit);
+        settingsBtn.addEventListener('click', showSettings);
+        saveBtn.addEventListener('click', saveNames);
+        resetBtn.addEventListener('click', resetNames);
+        logoInput.addEventListener('change', handleLogoUpload);
+        removeLogo.addEventListener('click', removeLogoImage);
+        saveSettings.addEventListener('click', saveAppSettings);
+        resetSettings.addEventListener('click', resetAppSettings);
+
+        // Initialize
+        updateHeader();
+        updateScheduleDisplay();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'963bba45e66a3f7a',t:'MTc1MzI3OTQ3My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
